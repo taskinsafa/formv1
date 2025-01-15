@@ -1,0 +1,231 @@
+/* Genel Stiller */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+}
+
+.main-content {
+    flex: 1;
+}
+
+/* Navbar Stilleri */
+.navbar {
+    background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    padding: 0.8rem 0;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #0d6efd !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.navbar-brand i {
+    font-size: 1.4rem;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    color: rgba(4, 12, 110, 0.9) !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background: rgba(28, 5, 53, 0.15);
+    color: #ffffff !important;
+}
+
+.nav-link.active {
+    background: rgba(72, 7, 7, 0.2);
+    color: #ffffff !important;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    background: #ffffff;
+}
+
+.dropdown-item {
+    padding: 0.7rem 1rem;
+    transition: all 0.2s ease;
+    color: #333333;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #1a237e;
+}
+
+.dropdown-item i {
+    width: 1.2rem;
+    text-align: center;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding: 1rem 0;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    .nav-link {
+        padding: 0.7rem 1rem !important;
+    }
+    
+    .navbar-nav .dropdown-menu {
+        box-shadow: none;
+        border-left: 3px solid #ffffff;
+        background: rgba(255, 255, 255, 0.1);
+        margin-top: 0;
+    }
+
+    .navbar-nav .dropdown-menu .dropdown-item {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .navbar-nav .dropdown-menu .dropdown-item:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+    }
+
+    .dropdown-divider {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Sayfa Başlığı */
+.page-title {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb-item a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+/* Upload Area Stilleri */
+.upload-area {
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.upload-area.dragover {
+    background-color: #e9ecef;
+    border-color: #0d6efd;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: #6c757d;
+}
+
+.file-input {
+    display: none;
+}
+
+.preview-area img {
+    max-height: 300px;
+    border-radius: 8px;
+}
+
+/* Kart Stilleri */
+.card {
+    border: none;
+    border-radius: 15px;
+    background: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Buton Stilleri */
+.btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+/* Footer Stilleri */
+.footer {
+    background-color: #fff;
+    padding: 1.5rem 0;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0;
+    color: #6c757d;
+}
+
+/* Responsive Düzenlemeler */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .upload-area {
+        padding: 1rem;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Input group stilleri */
+.input-group .btn-outline-secondary {
+    border-color: #ced4da;
+}
+
+.input-group .btn-outline-secondary:hover {
+    background-color: #f8f9fa;
+}
+
+.input-group .form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Kaydet butonu hover efekti */
+#saveButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+} 
