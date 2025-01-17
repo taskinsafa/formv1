@@ -11,11 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let selectedFile = null;
 
-    // Tesseract.js yükleme - ayarları güncelleyelim
     const worker = Tesseract.createWorker({
         logger: m => {
             console.log(m);
-            // Loading durumunu güncelle
             if (m.status === 'recognizing text') {
                 uploadButtonText.textContent = `İşleniyor... ${Math.round(m.progress * 100)}%`;
             }
@@ -113,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
         uploadSpinner.style.display = 'inline-block';
 
         try {
-            // Azure Computer Vision API'ye istek at
             const endpoint = 'https://ocr-service-mobius.cognitiveservices.azure.com/';
             const apiKey = 'AZnDeDETwkpj8DBVqciZWe2IP0tlEr1hLgyYkxGPucouJ908mNm6JQQJ99BAAC5RqLJXJ3w3AAAFACOGM4DN';
             
@@ -144,21 +141,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
 
-            // Plaka ve Şase No'yu bulmak için regex kullanalım
             const plakaMatch = extractedText.match(/([0-9]{2})[A-Z]{1,3}[0-9]{2,4}/);
-            // Şase no için özel regex - "(E) ŞASE NO" ifadesinden sonraki 17 karakterli kodu bul
             const saseMatch = extractedText.match(/(?:ŞASE NO\s*)\s*([A-HJ-NPR-Z0-9]{17})/);
 
-            // Plaka kontrolü
             const plaka = plakaMatch ? (() => {
                 const plakaNo = parseInt(plakaMatch[1]);
                 return (plakaNo >= 1 && plakaNo <= 81) ? plakaMatch[0] : null;
             })() : null;
             
-            // Şase no için düzeltilmiş eşleştirme
             const saseNo = saseMatch ? saseMatch[1] : null;
 
-            // Varsa önceki sonuç alanını temizle
             const oldResultArea = document.getElementById('ocrResultArea');
             if (oldResultArea) {
                 oldResultArea.remove();
@@ -204,16 +196,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 `;
 
-                // Sonuç alanını sayfaya ekle
                 const cardBody = document.querySelector('.card-body');
                 cardBody.appendChild(resultArea);
 
-                // Kaydet butonuna tıklandığında
                 document.getElementById('saveButton').addEventListener('click', async function() {
                     const finalPlaka = document.getElementById('plakaInput')?.value;
                     const finalSaseNo = document.getElementById('saseNoInput')?.value;
 
-                    // Validation
                     if (!finalPlaka || !finalSaseNo) {
                         Swal.fire({
                             icon: 'error',
@@ -224,23 +213,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
 
                     try {
-                        // Burada backend'e kaydetme işlemi yapılacak
-                        // Örnek API çağrısı:
-                        /*
-                        const response = await fetch('/api/ruhsat/kaydet', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                plaka: finalPlaka,
-                                saseNo: finalSaseNo,
-                                image: await toBase64(selectedFile)
-                            })
-                        });
-                        */
-
-                        // Başarılı kayıt sonrası
                         Swal.fire({
                             icon: 'success',
                             title: 'Başarılı!',
@@ -262,7 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
 
-                // Başarılı OCR bildirimi
                 Swal.fire({
                     icon: 'success',
                     title: 'Bilgiler Tespit Edildi',
@@ -285,5 +256,10 @@ document.addEventListener('DOMContentLoaded', function() {
             uploadButtonText.textContent = 'Ruhsatı Yükle';
             uploadSpinner.style.display = 'none';
         }
+    }
+
+    const yearElement = document.querySelector('.footer-copyright .year');
+    if (yearElement) {
+        yearElement.textContent = `© ${new Date().getFullYear()}`;
     }
 }); 

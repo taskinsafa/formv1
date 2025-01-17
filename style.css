@@ -1,231 +1,413 @@
-/* Genel Stiller */
+:root {
+    --primary-color: #d98038;
+    --secondary-color: #e69655;
+    --accent-color: #f4c17f;
+    --background-color: #fff9f4;
+    --text-color: #2d1810;
+}
+
 body {
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    background-color: #f8f9fa;
+    background: var(--background-color);
+    background-image: 
+        radial-gradient(at 40% 20%, rgba(79, 70, 229, 0.1) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, rgba(129, 140, 248, 0.1) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, rgba(199, 210, 254, 0.1) 0px, transparent 50%);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+}
+
+#objects2 {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .main-content {
-    flex: 1;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
 }
 
 /* Navbar Stilleri */
 .navbar {
-    background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    padding: 0.8rem 0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.navbar .nav-item {
+    margin: 0 0.5rem;
+}
+
+.brand-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-icon-wrapper i {
+    color: white;
+    font-size: 1.2rem;
 }
 
 .navbar-brand {
-    font-weight: 600;
-    font-size: 1.3rem;
-    color: #0d6efd !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-.navbar-brand i {
-    font-size: 1.4rem;
+    color: var(--primary-color) !important;
+    font-weight: 700;
 }
 
 .nav-link {
-    padding: 0.5rem 1rem !important;
-    border-radius: 0.5rem;
+    color: var(--text-color) !important;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 10px;
     transition: all 0.3s ease;
-    color: rgba(4, 12, 110, 0.9) !important;
-    font-weight: 500;
 }
 
 .nav-link:hover {
-    background: rgba(28, 5, 53, 0.15);
-    color: #ffffff !important;
+    background: rgba(79, 70, 229, 0.1);
+    color: var(--primary-color) !important;
 }
 
 .nav-link.active {
-    background: rgba(72, 7, 7, 0.2);
-    color: #ffffff !important;
-    font-weight: 600;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: var(--primary-color);
+    color: white !important;
 }
 
-.dropdown-menu {
+/* Kart Stilleri */
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     border: none;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border-radius: 0.5rem;
-    margin-top: 0.5rem;
-    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
 }
 
-.dropdown-item {
-    padding: 0.7rem 1rem;
-    transition: all 0.2s ease;
-    color: #333333;
-}
-
-.dropdown-item:hover {
-    background-color: #f8f9fa;
-    color: #1a237e;
-}
-
-.dropdown-item i {
-    width: 1.2rem;
-    text-align: center;
-}
-
-@media (max-width: 991.98px) {
-    .navbar-collapse {
-        padding: 1rem 0;
-        background: rgba(0, 0, 0, 0.1);
-        border-radius: 0.5rem;
-        margin-top: 0.5rem;
-    }
-    
-    .nav-link {
-        padding: 0.7rem 1rem !important;
-    }
-    
-    .navbar-nav .dropdown-menu {
-        box-shadow: none;
-        border-left: 3px solid #ffffff;
-        background: rgba(255, 255, 255, 0.1);
-        margin-top: 0;
-    }
-
-    .navbar-nav .dropdown-menu .dropdown-item {
-        color: rgba(255, 255, 255, 0.9);
-    }
-
-    .navbar-nav .dropdown-menu .dropdown-item:hover {
-        background: rgba(255, 255, 255, 0.15);
-        color: #ffffff;
-    }
-
-    .dropdown-divider {
-        border-color: rgba(255, 255, 255, 0.1);
-    }
-}
-
-/* Sayfa Başlığı */
-.page-title {
-    color: #2c3e50;
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.breadcrumb {
-    background: transparent;
-    padding: 0;
-    margin: 0;
-}
-
-.breadcrumb-item a {
-    color: #0d6efd;
-    text-decoration: none;
+.card-title-utts {
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 /* Upload Area Stilleri */
 .upload-area {
-    border: 2px dashed #dee2e6;
-    border-radius: 8px;
-    padding: 2rem;
-    text-align: center;
+    border: 2px dashed var(--accent-color);
+    border-radius: 16px;
+    padding: 3rem 2rem;
     transition: all 0.3s ease;
-    background-color: #fff;
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .upload-area.dragover {
-    background-color: #e9ecef;
-    border-color: #0d6efd;
+    background: rgba(79, 70, 229, 0.1);
+    border-color: var(--primary-color);
 }
 
 .upload-icon {
-    font-size: 3rem;
-    color: #6c757d;
+    color: var(--primary-color);
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.upload-content p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    opacity: 0.8;
 }
 
 .file-input {
     display: none;
 }
 
+.btn-upload {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+}
+
+.preview-area {
+    max-width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+}
+
 .preview-area img {
     max-height: 300px;
-    border-radius: 8px;
-}
-
-/* Kart Stilleri */
-.card {
-    border: none;
-    border-radius: 15px;
-    background: #fff;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Buton Stilleri */
-.btn {
-    padding: 0.5rem 1.5rem;
-    border-radius: 6px;
-    font-weight: 500;
-}
-
-.btn-primary {
-    background-color: #0d6efd;
+.btn-primary, .btn-success {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border: none;
+    border-radius: 12px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
-    background-color: #0b5ed7;
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(79, 70, 229, 0.2);
 }
 
-/* Footer Stilleri */
-.footer {
-    background-color: #fff;
-    padding: 1.5rem 0;
-    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-    margin-top: auto;
+/* Dropdown Stilleri */
+.dropdown-menu {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.footer p {
-    margin: 0;
-    color: #6c757d;
+.dropdown-item {
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: rgba(79, 70, 229, 0.1);
+    color: var(--primary-color);
+}
+
+/* Avatar Stilleri */
+.avatar-wrapper {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-wrapper i {
+    color: white;
+    font-size: 1rem;
 }
 
 /* Responsive Düzenlemeler */
 @media (max-width: 768px) {
-    .container {
+    .navbar-collapse {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
         padding: 1rem;
-    }
-    
-    .upload-area {
-        padding: 1rem;
-    }
-
-    .page-title {
-        font-size: 1.5rem;
+        border-radius: 16px;
+        margin-top: 1rem;
     }
 }
 
-/* Input group stilleri */
-.input-group .btn-outline-secondary {
-    border-color: #ced4da;
+/* Footer Stilleri */
+.footer {
+    margin-top: auto;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 0;
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
 }
 
-.input-group .btn-outline-secondary:hover {
-    background-color: #f8f9fa;
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    flex: 1;
 }
 
-.input-group .form-control:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-/* Kaydet butonu hover efekti */
-#saveButton:hover {
+.footer-copyright {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.footer-copyright .year {
+    font-weight: 600;
+}
+
+.footer-copyright .brand {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.footer-copyright .rights {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.footer-contact {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.support-text {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+.support-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: all 0.2s ease;
+}
+
+.support-link:hover {
+    color: var(--primary-color);
+    opacity: 1;
     transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.support-link i {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.olgun-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .footer-left {
+        align-items: center;
+    }
+
+    .olgun-logo {
+        height: 35px;
+    }
+}
+
+/* Sayfa Başlığı ve Breadcrumb Stilleri */
+.page-header {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(79, 70, 229, 0.1);
+}
+
+.page-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.page-title i {
+    font-size: 1.5rem;
+}
+
+.breadcrumb {
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb-item {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.breadcrumb-item a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--primary-color);
+}
+
+.breadcrumb-item.active {
+    color: var(--text-color);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--secondary-color);
+}
+
+/* Mobil görünüm için ek stil */
+@media (max-width: 991.98px) {
+    .navbar .nav-item {
+        margin: 0.3rem 0;
+    }
+}
+
+.contact-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .contact-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Brand Logo Stili */
+.brand-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Mobil için logo boyutu */
+@media (max-width: 576px) {
+    .brand-logo {
+        height: 32px;
+    }
+}
+
+.retro_cont {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#dynamic_table_main {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.dynamic_page_center_back {
+    width: 100%;
 } 
